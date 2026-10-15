@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Plane, Hotel, Ship, Compass, Globe, Palmtree, ArrowRight } from 'lucide-react';
-import { ServiceItem } from '../../data/services';
+import type { ServiceItem } from '../../data/services';
 import { WHATSAPP_PRESETS, getWhatsAppUrl } from '../../utils/whatsapp';
 
 export interface ServiceCardProps {

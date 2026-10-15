@@ -4,24 +4,24 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Send, MessageCircle, Mail, CheckCircle2, User, Phone, MapPin, Calendar, Users, DollarSign, Info } from 'lucide-react';
 import { SectionHeading } from '../ui/SectionHeading';
-import { buildEnquiryMessage, buildEmailFallback, FormEnquiryData } from '../../utils/whatsapp';
+import { buildEnquiryMessage, buildEmailFallback, type FormEnquiryData } from '../../utils/whatsapp';
 import { BUSINESS_CONFIG } from '../../config/business';
+
+const SERVICE_OPTIONS = [
+  'Flight Ticket Booking',
+  'Hotel Booking',
+  'Cruise Booking',
+  'Domestic Holiday Package',
+  'International Holiday Package',
+  'Thailand Holiday',
+  'Other'
+] as const;
 
 const enquirySchema = z.object({
   fullName: z.string().min(2, { message: 'Please enter your full name (at least 2 characters)' }),
   phone: z.string().min(10, { message: 'Please enter a valid phone number (at least 10 digits)' }),
   email: z.string().email({ message: 'Please enter a valid email address' }).optional().or(z.literal('')),
-  service: z.enum([
-    'Flight Ticket Booking',
-    'Hotel Booking',
-    'Cruise Booking',
-    'Domestic Holiday Package',
-    'International Holiday Package',
-    'Thailand Holiday',
-    'Other'
-  ], {
-    errorMap: () => ({ message: 'Please select a service' })
-  }),
+  service: z.enum(SERVICE_OPTIONS),
   preferredDestination: z.string().optional(),
   departureCity: z.string().optional(),
   startDate: z.string().optional(),

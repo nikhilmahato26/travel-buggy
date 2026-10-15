@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, MessageCircle, Send, Check } from 'lucide-react';
-import { DestinationItem } from '../../data/destinations';
+import type { DestinationItem } from '../../data/destinations';
 import { getDestinationWhatsAppUrl } from '../../utils/whatsapp';
 import { scrollToSection } from '../../utils/contact';
 
